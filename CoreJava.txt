@@ -1,0 +1,159 @@
+OOP Concepts:
+******************************************
+Session-1
+******************************************
+1)Classes and Objects
+	-Class - Class is custom datatype/template of object
+	-Objects - Objects has properties and functionalities i.e. it has states and behaviour
+	-Ex.Car -> has door,seat,tier -> these are properties
+			-> running a car,car has breaks,stopping the car ->these are functionalities
+2)Getters and Setters
+	-Private variables can only be accessed within the same class.It is possible to access them if we provide public get and set methods.
+	-this -> this can be used to refer current class instance variable
+3)Add functionalities into class
+	-Functionality -> Ex. Car is running
+	-POJO(Plain Old Java Objects) -> Objects with getters and setters methods and can be reusable
+	-Ex. of POJO -> properties of vehicle class(speed,engine etc.)
+4)Constructors
+	-Method whose name is same as class & doesn't have return type
+	-Overloading constructors -> Same name but parameters are different
+	-Default constructor -> If there is no constructor present in class then java will introduce default constructor
+	-If we injected any constructor then java will not use default constructor,only when there is no constructor added then only java uses default constructor
+	-Uses : -To set any values instead of setters use constructors
+			-To initialize the object of a class
+5)Inheritance
+	-One object acquires all the properties and behaviors of a parent object
+	-super() ->super() in java is a reference variable that is used to refer parent class constructors.
+	-super -> super keyword in java is a reference variable that is used to refer parent class objects.
+	-call parameterize constructor of parent class
+	-toString() -> If toString() method is not defined then by default toString method of object gets called and it return some garbage value of object
+	-Overriding of method in inheritance -> If there is method ambiguity present in child and parent class and you created object for child class then priority of method for child is more than the parent
+	-Is-a relationship between classes
+	-Types of Inheritance
+		1) Single Inheritance -> One class is inherited from parent class
+		2) Multiple Inheritance -> We inherit from more than one class -> Not allowed in java bcoz if same name methods present in parent class then while accessing properties in child there is possibility of crashing application
+		3) Multilevel Inheritance -> Ex.Class B is inherited from Class A and Class C is inherited from Class B
+		4) Hierarchical Inheritance -> Only one parent class and more than one child classes inherited from it
+		5) Hybrid Inheritance -> Ex.Class B and Class C are inherited from Class A and Class D is inherited from Class B and Class C -> Not allowed in java bcz its a combination of multiple inheritance
+		
+	-Task for practice - Pending
+6)Composition
+	-Object which consists of multiple components
+	-Ex.Laptop ->RAM,Screen,Keyboard,Processsor(custom datatype bcz it may consists of other properties),Graphic card(custom datatype bcz it may consists of other properties)
+	-Has-a association between objects
+	-How we can access object inside an object -> getters & Setters methods and use .operator to access properties
+7)Encapsulation
+	-Give a shell to the data inside your object,to hide it from outside the world,whenever require we can use setters method
+	-Can access properties but cannot modify properties Ex.Bank Employee with Customer data
+	-private properties
+	-Using not using setters encapsulation can takes place
+8)Polymorphism
+	-Multiple forms of an object
+	-When there is Is a relationship -> Creation object of parent class and using constructor of child class is possible
+	-Inheritance lets us inherit attributes and methods from another class.Polymorphism uses those methods to perform different tasks.This allows us to perform a single action in different ways.
+	-If the child has no method defined but same method present in parent class and we are trying to call method using child object,then polymorphism smartly called that method from parent class -> known as 'Dynamic Binding'.
+	
+********************************************************************************************************************************************************
+
+Core Java:
+******************************************
+Session-2
+******************************************
+1)Interfaces:
+	-standardized (i.e.naming convention/method signature) application
+	-It having only declaration
+	-@Override - Methods overrided from interface
+	-You can apply concept of Polymorphism 
+	-Only method signature is important not access specifier
+2)Abstraction
+	-Abstract class -> A restricted class that cannot be used to create objects (to access it, it must be inherited from another class)
+	-Is there is Is a relationship use Abstract class and if there is a Can relationship use Interfaces
+	-If we are designing small, concise bits of functionality, use interfaces. If we are designing large functional units, use an abstract class.
+3)Multiple Inheritance
+	-Use two different Interfaces to use its methods/properties inside child class
+4)Inner class
+	-Access one class ,methods inside a class
+	-Advantages : -Better real life depiction
+				  -Inner class can used by only its outer class
+				  -Inner object available to inside outer object
+5)Nested Class
+	-Static nested class
+	-NonStatic nested class -> Instance inside instance
+		-Member inner class (Inner class) -> Non static class inside non static class
+		-Local inner class -> inner class whose scope is inside defined code block only, inside class is abstract and hidden from outside world
+		-Anonymous inner class -> no name to the inner class and we can only used once
+			-Anonymous Object -> there is no name of object Ex. new ClassName() instead of ClassName obj = new ClassName();
+6)User Input from Console
+	-Scanner class
+7)Static Element
+	-it has independent memory location
+	-Good practic is that put static method's variables are static only
+	-Method access using <name of class>.<name of method>
+	-No need of object to be created
+	-initialized only once at the start of the execution
+8)Static Inner Class
+	-We can not make outer class as static
+	-Rare usable thing
+	-Association between Inner Static and Outer class
+		-Outer class properties should be static to access inside Inner static class
+9)Final Keyword
+	-variable,class,method
+	-No setter methods required
+	-final variable -> Reassignment of variable is not possible
+	-final method -> can not override final method
+	-final class -> can not override methods and Reassignment of variable inside this class
+				 -> inheritance is not application for final classes
+10)Packages
+	-Better Organization
+	-Multiple classes with same name
+11)Scope & Access Modifier
+	-level of access of properties
+	-priority of local variable is high than global variable
+	-Access Modifier
+		-Default -> element access within the package
+		-Private -> element access within the class
+		-Public -> element access to whole
+		-Protected -> element access within and outside the package with inheritance only
+12)Exception Handling
+	-java.lang.Object
+		-java.lang.Throwable
+			-java.lang.Exception
+				-java.lang.RuntimeException
+	-Sequence of catch block matters
+	-Finally block
+		-after catch block
+	-throw & throws keyword
+		-throws -> When uses with method then wherever we are calling method there we need to handle
+		-throw -> used to declare exception
+			   -> child class can not handle parent class exception
+	-User Defined Exceptions
+		-If we extending Throwable class in user defined exception then we need to handle user defined exception 
+	-Checked & Unchecked Exception
+		-Checked exception -> Ex. If we are using FileReader then java smartly asks to handle exception
+		-Unchecked Exception -> Ex. Arithmatic Exception 
+13)Enum & Strings
+	-Enum
+		-Collections of pre-defined constants
+		-static final variables to define as constants
+	-Strings	
+		-If String str1 = new String("a");	//Reference generated is different
+			String str2 = new String("a");  //Reference generated is different
+			so str1 == str2 is false
+		-If String str1 = "a";	//Reference generated is same
+			String str2 = "a";	//Reference generated is same
+			So str1 == str2 is true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
