@@ -1,0 +1,347 @@
+Session-1 -Collections
+******************************************
+1) Array
+	-collection of same datatype elements
+	-stored in adjustant memory location
+	-foreach loop
+	-call by value & call by reference
+		-Call by value -> If value pass to the method then inside method it will store to local memory location and when method ends that memory location gets released
+	-Issues with Array -> If size we specified as 100 and we store only 2 elements then there will be wastage of memory
+					   -> If array size is 10 and if we want to add another element then we need to change at code level
+
+2)Collection Framework & Collections
+	-Collection Framework -> Collection of Interfaces and Classes -> Easy to store and process data
+	-Collection of DataStructures 
+	-Collection
+		-Set
+			-SortedSet
+		-List
+			-ArrayList
+			-Stack
+			-LinkedList
+		-Queue
+		-Deque
+	-Map
+		-SortedMap
+	-Advantage
+		-No third party API required
+		-Tested and Optimized
+3)ArrayList
+	-Class in java
+	-add(),remove(),set(),get(),contains(),indexOf()
+	-Autoboxing and unboxing
+		-Boxing -> Converting primitive datatype into an object which called as 'Boxing'. Ex. studentNumbers.add(new intWrapper(20)); Here studentNumbers is an array of type <intWrapper>.
+		-UnBoxing -> Converting an object to primitive datatype called as 'UnBoxing'. Ex. studentNumbers.get(0).getIntValues(); Here studentNumbers is an array of type <intWrapper> and getIntValues() is a getter of class intWrapper.
+		-Java internally do autoboxing and unboxing
+	-Advantage : Accessing information is fast & easy to access from any location
+	-Disdvantage : Operation is slow & use more memory while operating
+4)Stack
+	-LIFO
+	-push(),pop(),peek() -> see last element from stack,search(),isEmpty()
+	-extends Vector class
+	-Vector methods are same as ArrayList but they are synchronized
+5)LinkedList
+	-Collection of Nodes
+	-Data of current node & Address of next node
+	-Advantage : Use less memory while operating 
+	-First node have address of next node with no data & Last node have only data
+	-add(index,element),add(),remove(index,element),remove(),set()
+6)Extra Points
+	-List Interface
+		-Recommended to use becoz its not specific to ArrayList,LinkedList or Stack
+	-Iterators
+		-foreach loop implements iterators at background
+		-Advantage : we can move forword to the list & move previous element to the list
+		-Faster than for loops
+	-Sorting and reversing
+		-Collections.reverse()
+		-list.sort();
+	-compareTo method
+		-part1 == part2 -> 0
+		-part2 > part1 -> greater than 0
+		-part2 < part1 -> less than 0
+		-compares two strings lexicographically(alphabetical order)
+	-List of Object type -> For generic implementation
+7)Sets
+	-Use is low
+	-Does'nt allow duplicate values
+	-Cant retrieve any value from sets as no get() method available
+	-HashSet -> Frequently used type
+	-Sequence of output may not be same
+	-More memory efficient
+	-Types of Sets:
+		-HashSet
+			-Sequence may not same
+			-Hashing Table is used
+			-Faster for add,search,remove operations
+		-LinkedSet
+			-Order is based on order in which we added elements
+			-Linked List and Hashing Table is used
+			-Little slower than HashSet
+		-TreeSet
+			-Order is based on natural ordering or based on compare method
+			-Tree is used
+			-Slower bcz sorting is required
+	-Comparator Interface
+		-Comparator use
+8)Queue & Deque
+	-Queue
+		-FIFO
+		-Remove at front & Add at Rear
+		-Types of Queue
+			-Array backed Queue -> Queue build using Array at backend
+				-size is constant and we need to pass size
+			-LinkedList backed Queue -> Queue build using LinkedList at backend
+				-Ex. LinkedBlockingQueue() -> size is dynamic
+			-Blocking Queue -> No null element will present
+			-Priority Queue -> Elements are arranged using comparator interface or using natural ordering
+		-add(),remove(),element() ->throws an exceptions
+		-offer(),poll(),peek() -> returns some values if exception occurs
+	-Deque
+		-Double ended queue
+		-Add & Remove operations perform at front and rear of the queues
+		-same operations like Queue
+	    -addFirst(),addLast(),removeFirst(),removeLast(),offerFirst(),offerLast(),pollFirst(),pollLast(),peekFirst(),peekLast(),getFirst(),
+	    getLast()		
+9)Maps
+	-HashMap ->Sequence is not sorted,element sequence is based on input & sequence order is not guaranteed
+	-TreeSet ->Sequence is sorted,element sequence is natural ordering
+			-> Use of Comparable Interface
+			-> need to implement comparable interface
+	-Key Value pair
+	-Map.Entry<K,V>
+	-entrySet()
+	-hashCode() -> unique number will be generated
+	-.equals() -> on custom objects it will not work
+	- we can generate hashCode() and equals method generated
+	-Custom Objects
+	-Maps
+		-SortedMap
+	-Collection methods will not work on Maps
+	-If we know the key and we want value then we can retrieve easily like map.get(key)
+	-But if we know the value and we want key then we need to iterator over map and search for entry.getValue().equals(value)
+	
+********************************************************************************************************************************************************
+
+Session-2 - Generics
+******************************************
+1)Generic
+	-Generic Programming
+	-Later versions of java 5
+	-Advantage : -> Reusability
+				 -> Using this we can returns any type of list
+				 -> No need of type casting but in collection if we use Object for returning any list we need typecasting and performance goes down in typecasting
+				 -> Provide type safety i.e. we will get compile time error if we give any invalid input but if we use Collection Object it will give us Runtime Error
+	-<T> -> Some Type
+	-<E> -> Element
+	-<K> -> Key
+	-<V> -> Value
+	-<N> -> Number
+	-Generic Methods
+		-Define anywhere in program
+	-Bounded Type Parameter
+		-Used for putting restriction on Parameter
+		-Ex.<N extends Number> -> It will take only Number as a parameter, In this example we cant pass string as a input parameter
+	-Comparable Interface( used for natural ordering)
+		-override compareTo method
+		-Need to apply bounded type
+	-WildCards in Generics
+		-List<?> -> If we dont know the object which we called as 'Bound'.
+		-List<? extends ParentClass> -> Upper Bound i.e. we apply the bound at upper level
+		-List<? super ChildClass> -> Lower Bound i.e. we apply the bound at lower level
+		-Most useful is Upper Bound
+
+********************************************************************************************************************************************************
+
+Session-3 - File Handling
+******************************************
+1)Data Streams
+	-Java Handles data as a stream of data
+	-Types:
+		-Output Streams : System.out -> To write into file
+		-Input Streams : System.in -> To read from file
+		-Error Stream : System.err -> Handle or show error
+2)Create File
+	-If no path given then reference it is taking of project
+	-Relative path -> Not full path is given
+	-Paths are not case sensitive
+	-createNewFile("FileName")
+	-mkdir() -> create only one directory
+	-mkdirs() -> create sub directories
+3)Write onto file
+	-BufferedWriter ,FileWriter(File,isAppend)
+	-If we edit file and again execute program file content override
+4)Read from File
+	-BufferedReader ,FileReader(File)
+	-Scanner
+	-Scanner vs BufferedReader
+		-BufferedReader -> synchronous
+						-> used during multithreading
+						-> Large buffer 8Kbyte byte buffer
+						-> Faster bcz Reads sequence of characters
+						-> Reads sequence of characters
+						-> Used during file handling
+		-Scanner -> asynchronous
+				 -> avoid during multithreading bcz of async
+				 -> Small Buffer 1Kbyte char buffer
+				 -> Slower bcz do parsing of data
+				 -> Preferable during user input / small operations
+5)Try with resources
+	-try(BufferedReader br = new BufferedReader(new FileReader(file))){	}	-> close br automatically
+	-Above Java 7 versions
+6)Serializable Object
+	-If object is not serializable then it will throws an exception while returning onto file
+	-serialVersionId -> Identification for class
+	-Give the consistency
+6)Serialization of Object
+	-Serializable interface implements & serial id
+				 
+********************************************************************************************************************************************************
+
+Session-4 - Multi-Threading Concurrency
+******************************************				 
+1)Multi-Threading					 
+	-Multi-tasking
+	-Used in Standalone application
+	-Synchronization
+	-Thread -> subprocess in parent process, consume resources which consumed by parent process,execute independently
+	-States of thread:
+		-Runnable -> thread is ready for execution
+		-Running ->
+		-Waiting or Blocked thread -> Resources are blocked by other threads
+	-Flow of Thread :
+		-New State -> new Thread()
+		-Runnable State -> thread.start()
+		-Running State -> run()
+		-Blocked/Waiting State ->  sleep(),wait(),yeild()
+		-Terminated/Dead State -> run() returns
+	-All thread methods called by JVM itself
+	-Issues : -> If multiple threads are working on common data then there may be inconsistency of data -> Solution is 'Synchronization'
+2)Implementing using Thread class
+	-extends Thread
+3)Implementing using Runnable interface
+	-implements Runnable
+	-Thread thread1 = new Thread(new TestClass(1)); -> way to create thread using Runnable Interface,By creating Object of Thread class & define run() inside Thread class
+4)Synchronization:
+	-If multiple threads are working on common data then there may be inconsistency of data -> Solution is 'Synchronization'
+	-Types of synchronization:
+		->Synchronized methods
+			-It will prevents multiple threads to run simultaneously i.e. only one thread execute method at a time
+			-Used to prevent consistency problem
+			-Issue : Whenever we make synchronized to any method then lock gets apply and it is specific to object, so if we are calling that method on different objects then inconsistency may occur
+			-Capability to control the access of multiple threads to any shared resource
+			-Used to prevent thread interference
+			-Keep threads from interfering with one another while sharing data. This can be done by three ways in java:
+			-by synchronized method
+				-it automatically acquires the lock for that object and releases it when the thread completes its task
+		->Synchronized block
+			-Used to lock an object for any shared resource,scope is smaller than synchronized method
+			-by static synchronization
+			-Using synchronized block time required for execution is less than time required for synchronized method if synchronized method contains other stuff other than main stuff used for thread execution
+			-Synchronized block on object -> when we used synchronized block on an object then intransic lock which need to apply which should not visible for outside world
+				-Ex.  private Object lock = "lock";		synchronized method(lock){}
+			-Lock the object --> Object level lock is mechanism when we want to synchronize a non-static method or non-static code block such that only one thread will be able to execute the code block on given instance of the class. This should always be done to "make instance level data thread safe"
+			-Synchronized block can take any type of object like string,integer. ex. String a =""; synchronized(a) {}
+			-Synchronized block will not execute simultaneously if they are sharing same object
+		->Static synchronization
+			-static element have separate space allocated in memory and it wont derived by an object
+			-static synchronized method will lock the class instead of the objects
+				-Ex.Brackets.generateBrackets("Thread1"); //class name.method()
+6)Volatile keyword
+	-rare in use
+	-If thread is dependent on variable then mark it as volatile
+	-variable will not cached by thread
+7)Wait and Notify
+	-One thread is depend on other thread to complete
+	-enclosed within synchronized method or synchronized block
+	-wait() --> waits the thread until another thread calls notify/notifyAll method
+	-notify() --> release lock on one lock method only, Thread who is waiting since long or thread whose priority is high will release
+	-notifyAll() --> release lock on all lock methods
+8)Interrupt
+	-In anonymous class we wont be able to call interrupt method ,we can call interrupt directly in run() method
+	-InterruptedException --> some other thread interrupted the current thread
+	-interrupt() is derived from the Thread reference and we have to call it in run()
+	-If any thread is in sleeping or waiting state (i.e. sleep() or wait() is invoked), calling the interrupt() method on the thread, breaks out the sleeping or waiting state throwing InterruptedException
+9)Join Operation
+	-Join method in Java allows one thread to wait until another thread completes its execution.
+	-We can use sleeping one thread for sometime but we never know the time of thread1 required to gets complete, so its better use join operation not sleep method
+	-join() is derived from thread reference
+	-Main thread waits until the execution of thread1 will completes
+10)Thread Pools
+	-Java Thread pool represents a group of worker threads that are waiting for the job and reuse many times. In case of thread pool, a group of fixed size threads are created. A thread from the thread pool is pulled out and assigned a job by the service provider.
+	-Using ExecutorService
+		-Ex. ExecutorService exeService = Executors.newFixedThreadPool(3);  //3 is no of threads are created
+	-Timeout value
+	-Place threads into a pool, wherever they sit and expect work. once a server receives a call for participation, it awakens a thread from this pool—if one is available—and passes it the request for service. Once the thread completes its service, it returns to the pool and awaits a lot of work. If the pool contains no accessible thread, the server waits till one becomes free.
+11)CountDownLatch
+	-CountDownLatch class is a synchronization aid which allows one or more thread to wait until the mandatory operations are performed by other threads
+	-Locking mechanism which apply on other threads
+	-await() -> It will wait main thread until other thread's execution gets complete
+	-countDown() -> It will unlock the lock which locked by await()
+12)Blocking Queue
+	-ArrayBlockingQueue -> It will stop after size of queue elements reach and It will wait for space for further execution
+13)Reentrant Lock
+	-To get consistent result of common variable then we can use reentrant lock method and lock the thread for execution and unlock it after its execution
+	-To prevent deadlock this concept is useful
+	-Put lock  in try block and unlock in finally block to prevent locking infinitely in case of exception occurs
+14)Deadlock
+	-Make your application stuck at a point
+	-Ex. If thread1 is using resource1 which is needed by thread2 and thread2 is using resource2 which is needed by thread1, so this kind of intersection of resource requirement is nothing but deadlock.
+	
+
+********************************************************************************************************************************************************
+
+Session-5 - GIT
+******************************************	
+-Distributed Version Control System
+-Merging Files
+	-There can be conflicts
+	-If in two files different data is there then fast forward is done
+-Pushing & Pulling Files,Committing changes
+-Resolve conflicts
+-Local Repository
+	-Where developer make changes first
+-Remote Repository
+	-Developer uploads changes on server
+	-After commit we give version name
+-Branching
+
+
+********************************************************************************************************************************************************
+
+Session-6 - Debugging
+******************************************
+-Third Party thing which helps to control execution flow
+-Debug window
+	-Java Application information
+	-Disconnect -> We want to disconnect from remote program
+	-Step into,Step onto,Step return -> return the execution by one step
+	-Drop to frame -> Reexecute method from start
+	-Step filters -> speed up debugging by whichever packages we checked those classes/packages get skipped
+-Breakpoint
+	-Suspend VM -> Application gets terminated
+	-Suspend thread -> Suspend current thread
+-Variables
+	-Update value of variable and debug at specific point to get desired result
+	-Watch on variable -> shows the declared variables and their values
+	-Inspect variable -> give current value
+-Terminate & Remove instance if more than 1 instance is getting debugged-> 
+
+
+********************************************************************************************************************************************************
+
+Session-7 - Lambda Expression
+******************************************
+-After Java 8 Version
+-Lambda expressions are similar to methods, but they do not need a name and they can be implemented right in the body of a method.
+-Lambda Expression -> Through which we can pass definition of an expression
+				   -> Reducing no of statements
+				   -> Applicable only if there is one abstract method
+-Functional Interface
+	-It having exact 1 abstract method
+-Implicit typecasting is also done using lambda expression
+-Variables which we are working with lambda expression,if we are performing any operations on those variables before using it it will throws an exception and says variable should be final variable
+-Use lambda expression inside forEach loop
+-Predicates
+	-boolean value which is either true or false
+	
